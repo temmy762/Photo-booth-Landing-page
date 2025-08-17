@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magic Mirror Photobooth - Interactive Photo Experience | Aruba</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="alternate icon" type="image/jpeg" href="assets/images/logo.jpeg">
+<link rel="apple-touch-icon" href="assets/images/logo.jpeg">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script id="mailto-submit">
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  function clearError(el){ el.classList.remove('ring-2','ring-red-500'); }
+  function setError(el){ el.classList.add('ring-2','ring-red-500'); }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const to = 'fotografiamigransenor@gmail.com';
+
+    const first = document.getElementById('first_name');
+    const last = document.getElementById('last_name');
+    const email = document.getElementById('email');
+    const phone = document.getElementById('phone');
+    const date = document.getElementById('event_date');
+    const eventType = document.getElementById('event_type');
+    const locationEl = document.getElementById('event_location');
+    const subjectEl = document.getElementById('contact-subject');
+    const messageEl = document.getElementById('message');
+
+    // Basic validation
+    const required = [first, last, email, date, eventType, locationEl];
+    let valid = true;
+    required.forEach(el => { clearError(el); if (!el.value.trim()) { setError(el); valid = false; }});
+    if (!valid) { return; }
+
+    const subject = (subjectEl && subjectEl.value.trim()) ? subjectEl.value.trim() : 'New Booking Inquiry';
+    const lines = [
+      `Name: ${first.value.trim()} ${last.value.trim()}`,
+      `Email: ${email.value.trim()}`,
+      `Phone: ${phone.value.trim()}`,
+      `Event Date: ${date.value}`,
+      eventType && eventType.value && eventType.value !== '' ? `Event Type: ${eventType.value}` : null,
+      `Event Location: ${locationEl.value.trim()}`,
+      '',
+      'Additional Details:',
+      (messageEl && messageEl.value.trim()) ? messageEl.value.trim() : '(none)'
+    ].filter(Boolean);
+
+    const body = encodeURIComponent(lines.join('\n'));
+    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+    window.open(mailto, '_blank');
+  });
+});
+</script>
+<script id="prefill-contact-subject">
+document.addEventListener('DOMContentLoaded', function() {
+  const subjectInput = document.getElementById('contact-subject');
+  if (!subjectInput) return;
+  const subjectLinks = document.querySelectorAll('a[href="#contact"][data-subject]');
+  subjectLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const subj = this.getAttribute('data-subject');
+      if (subj) subjectInput.value = subj;
+    });
+  });
+});
+</script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2563eb',secondary:'#fbbf24'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+/* Prevent horizontal scroll on mobile */
+html, body { overflow-x: hidden; }
+/* Ensure media doesn't overflow containers */
+img, video { max-width: 100%; height: auto; }
+/* Hide scrollbars on swipe areas */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you travel to all areas of Aruba?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — we serve events across the entire island of Aruba."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What languages do you speak during events?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We speak English, Papiamento, Spanish, and Dutch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you work around our venue's schedule?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. We offer flexible hours and coordinate closely with your venue."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the Magic Mirror actually work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The interactive mirror greets guests, guides poses and mini-games, captures photos with professional lighting, and enables instant sharing via QR or email."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's included in setup and breakdown?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We handle delivery, setup, on-site operation with an attendant, and breakdown."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with other vendors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — we collaborate with planners, venues, DJs, and photographers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between packages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Digital-Only focuses on the mirror experience with digital delivery. Standard adds unlimited photos/GIFs, props, instant sharing, online access, and custom borders. Premium includes everything in Standard plus professional event photography."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How far in advance should we book?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We recommend booking as early as possible; weekends and peak dates fill quickly."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body class="bg-white">
+<nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center">
+<a href="#home" class="flex items-center">
+ <img src="assets/images/logo.jpeg" alt="Magic Mirror Photobooth" class="h-10 w-auto"/>
+ <span class="sr-only">Magic Mirror Photobooth</span>
+ </a>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a href="#home" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+<a href="#how-it-works" class="text-gray-700 hover:text-primary transition-colors">How It Works</a>
+<a href="#gallery" class="text-gray-700 hover:text-primary transition-colors">Gallery</a>
+<a href="#packages" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+<a href="#faq" class="text-gray-700 hover:text-primary transition-colors">FAQ</a>
+<a href="#contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+</div>
+<a href="#contact" class="hidden md:inline-flex bg-secondary text-gray-900 px-6 py-2 !rounded-button font-semibold hover:bg-yellow-400 transition-colors whitespace-nowrap mr-2 md:mr-0 ml-auto md:ml-0">
+Book Now
+</a>
+<button class="md:hidden flex items-center justify-center w-8 h-8" id="mobile-menu-btn">
+<i class="ri-menu-line text-xl"></i>
+</button>
+</div>
+</div>
+<div class="md:hidden hidden bg-white border-t" id="mobile-menu">
+<div class="px-4 py-2 space-y-1">
+<a href="#home" class="block px-3 py-2 text-gray-700">Home</a>
+<a href="#how-it-works" class="block px-3 py-2 text-gray-700">How It Works</a>
+<a href="#gallery" class="block px-3 py-2 text-gray-700">Gallery</a>
+<a href="#packages" class="block px-3 py-2 text-gray-700">Packages</a>
+<a href="#faq" class="block px-3 py-2 text-gray-700">FAQ</a>
+<a href="#contact" class="block px-3 py-2 text-gray-700">Contact</a>
+<a href="#contact" class="block mt-2 px-3 py-3 bg-secondary text-gray-900 !rounded-button font-semibold text-center hover:bg-yellow-400 transition-colors" aria-label="Book Now via Contact Section">Book Now</a>
+</div>
+</div>
+</nav>
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=elegant%20modern%20event%20space%20with%20interactive%20mirror%20photobooth%20setup%2C%20luxury%20wedding%20reception%20venue%20with%20soft%20lighting%2C%20white%20and%20blue%20color%20scheme%2C%20professional%20photography%20equipment%2C%20guests%20enjoying%20interactive%20photo%20experience%2C%20sophisticated%20party%20atmosphere%2C%20Caribbean%20luxury%20resort%20setting%2C%20left%20side%20has%20clean%20white%20space%20for%20text%20overlay%2C%20right%20side%20shows%20the%20magical%20mirror%20setup&width=1920&height=1080&seq=hero-main&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent"></div>
+<div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="text-left">
+<h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">Aruba's Most Interactive Photo Experience</h1>
+<p class="text-xl text-gray-600 mb-8 leading-relaxed">The Magic Mirror guides your guests through unforgettable photo moments</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="#contact" class="bg-secondary text-gray-900 px-8 py-4 !rounded-button font-semibold text-lg hover:bg-yellow-400 transition-colors whitespace-nowrap">Get Your Quote</a>
+<a href="#gallery" class="border-2 border-primary text-primary px-8 py-4 !rounded-button font-semibold text-lg hover:bg-primary hover:text-white transition-colors whitespace-nowrap">See Demo</a>
+</div>
+<p class="mt-6 text-sm text-gray-600">Flexible Hours • Multilingual Service • Personalized Experience</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+ <h2 class="text-3xl md:text-4xl font-bold text-gray-900">What Makes Us Special in Aruba</h2>
+ </div>
+<div class="grid md:grid-cols-4 gap-8">
+<div class="text-center">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-mic-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Interactive Talking Magic Mirror Experience</h3>
+<p class="text-gray-600">Our mirror doesn't just take photos, it engages with your guests</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-user-heart-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Personalized Service - True Partnership</h3>
+<p class="text-gray-600">You're not just hiring a service, you're partnering with people who care</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-time-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Your Schedule is Our Schedule</h3>
+<p class="text-gray-600">Available early mornings to late nights, we work around your event</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-translate text-2xl text-primary"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">We Speak Your Language</h3>
+<p class="text-gray-600">Fluent in English, Papiamento, Spanish, and Dutch</p>
+</div>
+<div class="text-center">
+ <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+ <i class="ri-team-line text-2xl text-primary"></i>
+ </div>
+ <h3 class="text-lg font-semibold text-gray-900 mb-2">Love Collaborating</h3>
+ <p class="text-gray-600">We work seamlessly with venues, planners, and fellow creatives</p>
+ </div>
+</div>
+</div>
+</section>
+<section id="events-we-cater" class="relative py-20 bg-white">
+<div class="absolute bottom-0 left-0 w-full overflow-hidden rotate-180">
+<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-16 text-primary/5">
+<path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-current"></path>
+</svg>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Events We Cater To</h2>
+<p class="text-xl text-gray-600">Creating magical moments for every occasion</p>
+</div>
+<div class="grid md:grid-cols-4 gap-8">
+<div class="group relative overflow-hidden rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+<img src="https://readdy.ai/api/search-image?query=elegant%20wedding%20ceremony%20setup%20with%20floral%20decorations%2C%20romantic%20lighting%2C%20luxury%20venue%20setting%2C%20professional%20photography%20equipment%20visible&width=400&height=300&seq=wedding-event&orientation=landscape" alt="Weddings" class="w-full h-64 object-cover object-top">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+<div>
+<h3 class="text-xl font-bold text-white mb-2">Weddings</h3>
+<p class="text-white/80 text-sm">Make your special day even more memorable</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+<img src="https://readdy.ai/api/search-image?query=corporate%20event%20setup%20with%20professional%20networking%20atmosphere%2C%20business%20presentation%20equipment%2C%20modern%20venue%20setting&width=400&height=300&seq=corporate-event&orientation=landscape" alt="Corporate Events" class="w-full h-64 object-cover object-top">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+<div>
+<h3 class="text-xl font-bold text-white mb-2">Corporate Events</h3>
+<p class="text-white/80 text-sm">Elevate your business gatherings</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+<img src="https://readdy.ai/api/search-image?query=birthday%20party%20celebration%20with%20colorful%20decorations%2C%20party%20atmosphere%2C%20fun%20photo%20opportunities%2C%20entertainment%20setup&width=400&height=300&seq=birthday-event&orientation=landscape" alt="Birthday Parties" class="w-full h-64 object-cover object-top">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+<div>
+<h3 class="text-xl font-bold text-white mb-2">Birthday Parties</h3>
+<p class="text-white/80 text-sm">Create lasting birthday memories</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+<img src="https://readdy.ai/api/search-image?query=graduation%20ceremony%20celebration%20with%20academic%20decorations%2C%20formal%20event%20setup%2C%20professional%20photo%20area&width=400&height=300&seq=special-event&orientation=landscape" alt="Special Events" class="w-full h-64 object-cover object-top">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+<div>
+<h3 class="text-xl font-bold text-white mb-2">Special Events</h3>
+<p class="text-white/80 text-sm">Any occasion worth celebrating</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-it-works" class="relative py-20 bg-gradient-to-b from-primary/5 to-white">
+<div class="absolute bottom-0 left-0 w-full overflow-hidden rotate-180">
+<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-16 text-white">
+<path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-current"></path>
+</svg>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Experience the Magic</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">How Magic Mirror Works</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="text-center">
+<a href="#gallery" class="block focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+<div class="relative mb-8">
+<img src="assets/images/how-it-works/step-1.png" alt="Step 1 - Mirror Greets Guests" class="w-full h-64 object-cover object-top rounded-lg shadow-lg">
+<div class="absolute -top-4 -left-4 w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+<span class="text-xl font-bold text-gray-900">1</span>
+</div>
+</div>
+<h3 class="text-2xl font-semibold text-gray-900 mb-4">Mirror Greets Guests</h3>
+<p class="text-gray-600">Animated, talking mirror welcomes your guests</p>
+</a>
+</div>
+<div class="text-center">
+<a href="#gallery" class="block focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+<div class="relative mb-8">
+<img src="assets/images/how-it-works/step-2.png" alt="Step 2 - Guides Poses and Games" class="w-full h-64 object-cover object-top rounded-lg shadow-lg">
+<div class="absolute -top-4 -left-4 w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+<span class="text-xl font-bold text-gray-900">2</span>
+</div>
+</div>
+<h3 class="text-2xl font-semibold text-gray-900 mb-4">Guides Poses & Games</h3>
+<p class="text-gray-600">Interactive prompts make every photo fun and engaging</p>
+</a>
+</div>
+<div class="text-center">
+<a href="#gallery" class="block focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+<div class="relative mb-8">
+<img src="assets/images/how-it-works/step-3.jpeg" alt="Step 3 - Captures Perfect Moments" class="w-full h-64 object-cover object-top rounded-lg shadow-lg">
+<div class="absolute -top-4 -left-4 w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+<span class="text-xl font-bold text-gray-900">3</span>
+</div>
+</div>
+<h3 class="text-2xl font-semibold text-gray-900 mb-4">Captures Perfect Moments</h3>
+<p class="text-gray-600">High-quality photos with professional lighting</p>
+</a>
+</div>
+<div class="text-center">
+<a href="#gallery" class="block focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
+<div class="relative mb-8">
+<img src="assets/images/how-it-works/step-4.jpeg" alt="Step 4 - Instant Sharing" class="w-full h-64 object-cover object-top rounded-lg shadow-lg">
+<div class="absolute -top-4 -left-4 w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+<span class="text-xl font-bold text-gray-900">4</span>
+</div>
+</div>
+<h3 class="text-2xl font-semibold text-gray-900 mb-4">Instant Sharing</h3>
+<p class="text-gray-600">QR codes and email delivery for immediate access</p>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section id="gallery" class="relative py-20 bg-white">
+<div class="absolute bottom-0 left-0 w-full overflow-hidden rotate-180">
+<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-16 text-gray-50">
+<path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-current"></path>
+</svg>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Photo Gallery</h2>
+<p class="text-xl text-gray-600 mb-8">See the magic in action at real events</p>
+<div class="flex justify-center space-x-4 mb-8">
+<button class="px-6 py-2 bg-primary text-white !rounded-button font-medium whitespace-nowrap" data-filter="all">All</button>
+<button class="px-6 py-2 bg-gray-200 text-gray-700 !rounded-button font-medium hover:bg-gray-300 transition-colors whitespace-nowrap" data-filter="photos">Photos</button>
+<button class="px-6 py-2 bg-gray-200 text-gray-700 !rounded-button font-medium hover:bg-gray-300 transition-colors whitespace-nowrap" data-filter="videos">Videos</button>
+<button class="px-6 py-2 bg-gray-200 text-gray-700 !rounded-button font-medium hover:bg-gray-300 transition-colors whitespace-nowrap" data-filter="weddings">Weddings</button>
+<button class="px-6 py-2 bg-gray-200 text-gray-700 !rounded-button font-medium hover:bg-gray-300 transition-colors whitespace-nowrap" data-filter="corporate">Corporate</button>
+<button class="px-6 py-2 bg-gray-200 text-gray-700 !rounded-button font-medium hover:bg-gray-300 transition-colors whitespace-nowrap" data-filter="parties">Parties</button>
+</div>
+</div>
+<div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6" id="gallery-grid">
+ <!-- Photos -->
+ <div class="gallery-item photos" data-category="photos">
+ <img loading="lazy" src="assets/images/gallery/photos/ACC97252-2359-4FC3-BB87-877BB0F2A961.png" alt="Photo ACC97252-2359-4FC3-BB87-877BB0F2A961" class="w-full h-80 object-cover object-top rounded-lg shadow-lg hover:scale-105 transition-transform cursor-pointer">
+ </div>
+ <div class="gallery-item photos" data-category="photos">
+ <img loading="lazy" src="assets/images/gallery/photos/E21DC4A0-CCEC-4AF1-B041-64478543AD28.png" alt="Photo E21DC4A0-CCEC-4AF1-B041-64478543AD28" class="w-full h-80 object-cover object-top rounded-lg shadow-lg hover:scale-105 transition-transform cursor-pointer">
+ </div>
+ <div class="gallery-item photos" data-category="photos">
+ <img loading="lazy" src="assets/images/gallery/photos/F4D17FC2-A8B4-43B2-A337-A5AE3EE9EFBB.png" alt="Photo F4D17FC2-A8B4-43B2-A337-A5AE3EE9EFBB" class="w-full h-80 object-cover object-top rounded-lg shadow-lg hover:scale-105 transition-transform cursor-pointer">
+ </div>
+ <div class="gallery-item photos" data-category="photos">
+ <img loading="lazy" src="assets/images/gallery/photos/her.jpeg" alt="Photo her" class="w-full h-80 object-cover object-top rounded-lg shadow-lg hover:scale-105 transition-transform cursor-pointer">
+ </div>
+ <div class="gallery-item photos" data-category="photos">
+ <img loading="lazy" src="assets/images/gallery/photos/step-1.png" alt="Photo step-1" class="w-full h-80 object-cover object-top rounded-lg shadow-lg hover:scale-105 transition-transform cursor-pointer">
+ </div>
+ <div class="gallery-item photos" data-category="photos">
+ <img loading="lazy" src="assets/images/gallery/photos/step-2.png" alt="Photo step-2" class="w-full h-80 object-cover object-top rounded-lg shadow-lg hover:scale-105 transition-transform cursor-pointer">
+ </div>
+ <div class="gallery-item photos" data-category="photos">
+ <img loading="lazy" src="assets/images/gallery/photos/step-3.jpeg" alt="Photo step-3" class="w-full h-80 object-cover object-top rounded-lg shadow-lg hover:scale-105 transition-transform cursor-pointer">
+ </div>
+ <div class="gallery-item photos" data-category="photos">
+ <img loading="lazy" src="assets/images/gallery/photos/step-4.jpeg" alt="Photo step-4" class="w-full h-80 object-cover object-top rounded-lg shadow-lg hover:scale-105 transition-transform cursor-pointer">
+ </div>
+ <!-- Videos (MOV) -->
+ <div class="gallery-item videos" data-category="videos">
+ <video src="assets/images/gallery/videos/IMG_4844.mov" poster="assets/images/gallery/photos/ACC97252-2359-4FC3-BB87-877BB0F2A961.png" class="w-full h-80 object-cover rounded-lg shadow-lg" controls playsinline muted></video>
+ </div>
+ <div class="gallery-item videos" data-category="videos">
+ <video src="assets/images/gallery/videos/IMG_4943.mov" poster="assets/images/gallery/photos/E21DC4A0-CCEC-4AF1-B041-64478543AD28.png" class="w-full h-80 object-cover rounded-lg shadow-lg" controls playsinline muted></video>
+ </div>
+ <div class="gallery-item videos" data-category="videos">
+ <video src="assets/images/gallery/videos/IMG_4960.mov" poster="assets/images/gallery/photos/F4D17FC2-A8B4-43B2-A337-A5AE3EE9EFBB.png" class="w-full h-80 object-cover rounded-lg shadow-lg" controls playsinline muted></video>
+ </div>
+ <div class="gallery-item videos" data-category="videos">
+ <video src="assets/images/gallery/videos/IMG_5056.mov" poster="assets/images/gallery/photos/her.jpeg" class="w-full h-80 object-cover rounded-lg shadow-lg" controls playsinline muted></video>
+ </div>
+ <div class="gallery-item videos" data-category="videos">
+ <video src="assets/images/gallery/videos/IMG_5061.mov" poster="assets/images/gallery/photos/step-1.png" class="w-full h-80 object-cover rounded-lg shadow-lg" controls playsinline muted></video>
+ </div>
+ </div>
+ <div id="load-more-container" class="text-center mt-8 hidden">
+  <button id="load-more" class="px-6 py-2 bg-gray-200 text-gray-700 !rounded-button font-medium hover:bg-gray-300 transition-colors whitespace-nowrap">Load More</button>
+ </div>
+ </div>
+ </section>
+<section id="packages" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Choose Your Magic Mirror Experience</h2>
+<p class="text-xl text-gray-600">Pricing Packages</p>
+<p class="text-sm text-gray-500 mt-2">All prices in AWG</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
+<h3 class="text-2xl font-bold text-gray-900 mb-4">Digital-Only</h3>
+<div class="text-4xl font-bold text-primary">AWG 365<span class="text-lg text-gray-600 font-normal">/hour</span></div>
+<div class="text-sm text-gray-500 mb-6">2 hour minimum</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Full Magic Mirror Photobooth Experience</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Digital photo sharing via QR code or email</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Access to all event images via online gallery</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">On-site attendant for smooth setup & guest support</span>
+</li>
+</ul>
+<a href="#contact" data-subject="Request Booking — Digital-Only Package" class="w-full bg-gray-900 text-white py-3 !rounded-button font-semibold hover:bg-gray-800 transition-colors whitespace-nowrap text-center block" aria-label="Book Digital-Only Package via Contact Section">
+Book Digital-Only
+</a>
+</div>
+<div class="bg-white rounded-xl shadow-lg p-8 border-2 border-secondary relative">
+<div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-secondary text-gray-900 px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+<i class="ri-star-fill text-yellow-700"></i>
+Most Popular • Gold
+</div>
+<h3 class="text-2xl font-bold text-gray-900 mb-4">Premium</h3>
+<div class="text-4xl font-bold text-primary">AWG 525<span class="text-lg text-gray-600 font-normal">/hour</span></div>
+<div class="text-sm text-gray-500 mb-6">2 hour minimum</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Professional event photography to capture every moment</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Unlimited pictures & GIFs</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Fun props for added creativity</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Instant sharing of all photos & GIFs</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Printed & digital photos accessible online</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Custom borders designed to match your theme</span>
+</li>
+</ul>
+<a href="#contact" data-subject="Request Booking — Premium Package" class="w-full bg-secondary text-gray-900 py-3 !rounded-button font-semibold hover:bg-yellow-400 transition-colors whitespace-nowrap text-center block" aria-label="Book Premium Package via Contact Section">
+Book Premium
+</a>
+</div>
+<div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200 relative">
+<div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gray-200 text-gray-900 px-4 py-1 rounded-full text-sm font-semibold">
+Silver
+</div>
+<h3 class="text-2xl font-bold text-gray-900 mb-4">Standard</h3>
+<div class="text-4xl font-bold text-primary">AWG 395<span class="text-lg text-gray-600 font-normal">/hour</span></div>
+<div class="text-sm text-gray-500 mb-6">2 hour minimum</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Unlimited pictures & GIFs</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Fun props for added creativity</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Instant sharing of every photo & GIF</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Printed & digital photos accessible online</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line text-green-500 mr-3"></i>
+<span class="text-gray-600">Custom borders designed to match your theme</span>
+</li>
+</ul>
+<a href="#contact" data-subject="Request Booking — Standard Package" class="w-full bg-gray-900 text-white py-3 !rounded-button font-semibold hover:bg-gray-800 transition-colors whitespace-nowrap text-center block" aria-label="Book Standard Package via Contact Section">
+Book Standard
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="relative py-20 bg-primary/5">
+<div class="absolute bottom-0 left-0 w-full overflow-hidden rotate-180">
+<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-16 text-white">
+<path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-current"></path>
+</svg>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+<p class="text-xl text-gray-600">Real experiences from real events</p>
+</div>
+<div class="relative">
+<div id="testimonials-container" class="flex gap-6 overflow-x-auto snap-x snap-mandatory snap-always scroll-smooth no-scrollbar md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:snap-none" aria-label="Client reviews slider">
+<div class="bg-white rounded-xl shadow-lg p-8 flex-none basis-full snap-center md:basis-auto md:flex-initial md:snap-none">
+<div class="flex items-center mb-4">
+<img src="assets/images/logo.jpeg" alt="Reviewer avatar" class="w-12 h-12 rounded-full mr-4 object-cover" />
+<div>
+<h4 class="font-semibold text-gray-900">Sarah Martinez</h4>
+<p class="text-gray-600 text-sm">Bride, Eagle Beach Resort</p>
+</div>
+</div>
+<div class="flex text-secondary mb-4">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600">"The magic mirror was absolutely the highlight of our wedding! Our guests couldn't stop talking about it. The interactive experience was so much fun and the photos came out beautifully."</p>
+</div>
+<div class="bg-white rounded-xl shadow-lg p-8 flex-none basis-full snap-center md:basis-auto md:flex-initial md:snap-none">
+<div class="flex items-center mb-4">
+<img src="assets/images/logo.jpeg" alt="Reviewer avatar" class="w-12 h-12 rounded-full mr-4 object-cover" />
+<div>
+<h4 class="font-semibold text-gray-900">Michael Chen</h4>
+<p class="text-gray-600 text-sm">Event Manager, Hyatt Regency</p>
+</div>
+</div>
+<div class="flex text-secondary mb-4">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600">"We've used the magic mirror for multiple corporate events and it never fails to impress. The team is professional and the technology is cutting-edge. Highly recommended!"</p>
+</div>
+<div class="bg-white rounded-xl shadow-lg p-8 w-full shrink-0 snap-center md:w-auto md:shrink md:snap-none">
+<div class="flex items-center mb-4">
+<img src="assets/images/logo.jpeg" alt="Reviewer avatar" class="w-12 h-12 rounded-full mr-4 object-cover" />
+<div>
+<h4 class="font-semibold text-gray-900">Isabella Rodriguez</h4>
+<p class="text-gray-600 text-sm">Birthday Celebration</p>
+</div>
+</div>
+<div class="flex text-secondary mb-4">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-gray-600">"What an amazing addition to my 50th birthday party! The mirror got everyone involved and created such memorable moments. The instant prints were a perfect keepsake for guests."</p>
+</div>
+</div>
+</div>
+</section>
+<section id="faq" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+<p class="text-xl text-gray-600">Common Questions</p>
+</div>
+<div class="max-w-3xl mx-auto space-y-4">
+<details class="group bg-white border border-gray-200 rounded-lg p-6">
+<summary class="flex items-center justify-between cursor-pointer list-none">
+<span class="font-semibold text-gray-900">Do you travel to all areas of Aruba?</span>
+<span class="text-gray-500"><i class="ri-add-line group-open:hidden"></i><i class="ri-subtract-line hidden group-open:inline"></i></span>
+</summary>
+<div class="mt-3 text-gray-600">Yes — we serve events across the entire island. See the Service Areas in our Contact section for examples.</div>
+</details>
+<details class="group bg-white border border-gray-200 rounded-lg p-6">
+<summary class="flex items-center justify-between cursor-pointer list-none">
+<span class="font-semibold text-gray-900">What languages do you speak during events?</span>
+<span class="text-gray-500"><i class="ri-add-line group-open:hidden"></i><i class="ri-subtract-line hidden group-open:inline"></i></span>
+</summary>
+<div class="mt-3 text-gray-600">We speak English, Papiamento, Spanish, and Dutch.</div>
+</details>
+<details class="group bg-white border border-gray-200 rounded-lg p-6">
+<summary class="flex items-center justify-between cursor-pointer list-none">
+<span class="font-semibold text-gray-900">Can you work around our venue's schedule?</span>
+<span class="text-gray-500"><i class="ri-add-line group-open:hidden"></i><i class="ri-subtract-line hidden group-open:inline"></i></span>
+</summary>
+<div class="mt-3 text-gray-600">Absolutely. We offer flexible hours — early mornings to late nights — and coordinate closely with your venue.</div>
+</details>
+<details class="group bg-white border border-gray-200 rounded-lg p-6">
+<summary class="flex items-center justify-between cursor-pointer list-none">
+<span class="font-semibold text-gray-900">How does the Magic Mirror actually work?</span>
+<span class="text-gray-500"><i class="ri-add-line group-open:hidden"></i><i class="ri-subtract-line hidden group-open:inline"></i></span>
+</summary>
+<div class="mt-3 text-gray-600">Our interactive mirror greets guests, guides poses and mini‑games, captures photos with professional lighting, and enables instant sharing via QR or email.</div>
+</details>
+<details class="group bg-white border border-gray-200 rounded-lg p-6">
+<summary class="flex items-center justify-between cursor-pointer list-none">
+<span class="font-semibold text-gray-900">What's included in setup and breakdown?</span>
+<span class="text-gray-500"><i class="ri-add-line group-open:hidden"></i><i class="ri-subtract-line hidden group-open:inline"></i></span>
+</summary>
+<div class="mt-3 text-gray-600">We handle full delivery, setup, on‑site operation, and breakdown. An attendant is present to assist guests and ensure everything runs smoothly.</div>
+</details>
+<details class="group bg-white border border-gray-200 rounded-lg p-6">
+<summary class="flex items-center justify-between cursor-pointer list-none">
+<span class="font-semibold text-gray-900">Do you work with other vendors?</span>
+<span class="text-gray-500"><i class="ri-add-line group-open:hidden"></i><i class="ri-subtract-line hidden group-open:inline"></i></span>
+</summary>
+<div class="mt-3 text-gray-600">Yes — we love collaborating with planners, venues, DJs, and photographers to fit seamlessly into your event.</div>
+</details>
+<details class="group bg-white border border-gray-200 rounded-lg p-6">
+<summary class="flex items-center justify-between cursor-pointer list-none">
+<span class="font-semibold text-gray-900">What's the difference between packages?</span>
+<span class="text-gray-500"><i class="ri-add-line group-open:hidden"></i><i class="ri-subtract-line hidden group-open:inline"></i></span>
+</summary>
+<div class="mt-3 text-gray-600">Digital‑Only focuses on the full mirror experience with digital delivery. Standard adds unlimited photos/GIFs, fun props, instant sharing, online access, and custom borders. Premium includes everything in Standard plus professional event photography.</div>
+</details>
+<details class="group bg-white border border-gray-200 rounded-lg p-6">
+<summary class="flex items-center justify-between cursor-pointer list-none">
+<span class="font-semibold text-gray-900">How far in advance should we book?</span>
+<span class="text-gray-500"><i class="ri-add-line group-open:hidden"></i><i class="ri-subtract-line hidden group-open:inline"></i></span>
+</summary>
+<div class="mt-3 text-gray-600">We recommend booking as early as possible — weekends and peak dates fill quickly. If your event is soon, contact us to check availability.</div>
+</details>
+</div>
+</div>
+</section>
+<section id="contact" class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Ready to Add Magic to Your Event?</h2>
+<p class="text-xl text-gray-600">Let's make it happen!</p>
+</div>
+<div class="grid lg:grid-cols-2 gap-12">
+<div>
+<form id="contact-form" class="space-y-6">
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+<input id="first_name" name="first_name" required type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="Your first name">
+</div>
+<div>
+<label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+<input id="last_name" name="last_name" required type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="Your last name">
+</div>
+</div>
+<div>
+<label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+<input id="email" name="email" required type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="your.email@example.com">
+</div>
+<div>
+<label for="contact-subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+<input id="contact-subject" name="subject" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="e.g., Request Booking — Premium Package">
+</div>
+<div>
+<label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+<input id="phone" name="phone" type="tel" inputmode="tel" pattern="^\+?\d[\d\s-]{6,}$" title="Please enter a valid phone number (e.g., +297 745 0763)" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="+297 745 0763">
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label for="event_date" class="block text-sm font-medium text-gray-700 mb-2">Event Date</label>
+<input id="event_date" name="event_date" required type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+</div>
+<div>
+<label for="event_type" class="block text-sm font-medium text-gray-700 mb-2">Event Type</label>
+<select id="event_type" name="event_type" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm bg-white">
+<option value="" selected disabled>Select event type</option>
+<option>Wedding</option>
+<option>Corporate Event</option>
+<option>Birthday</option>
+<option>Anniversary</option>
+<option>Graduation</option>
+<option>Private Party</option>
+<option>Other</option>
+</select>
+</div>
+</div>
+<div>
+<label for="event_location" class="block text-sm font-medium text-gray-700 mb-2">Event Location</label>
+<input id="event_location" name="event_location" required type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="Venue name or address">
+</div>
+<div>
+<label for="message" class="block text-sm font-medium text-gray-700 mb-2">Additional Details</label>
+<textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" placeholder="Tell us more about your event, expected guests, special requirements..."></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-4 !rounded-button font-semibold text-lg hover:bg-blue-700 transition-colors whitespace-nowrap">
+Send Booking Request
+</button>
+</form>
+</div>
+<div class="space-y-8">
+<div>
+<h3 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+<div class="space-y-4">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+<i class="ri-phone-line text-primary"></i>
+</div>
+<div>
+<p class="font-medium text-gray-900">Phone</p>
+<div class="flex items-center gap-3 text-sm">
+<a href="tel:+2977450763" class="text-gray-600 hover:text-primary underline underline-offset-2" aria-label="Call +297 745 0763">+297 745 0763</a>
+<span class="text-gray-300">•</span>
+<a href="https://wa.me/2977450763?text=Hi%21%20I%27d%20like%20to%20book%20the%20Magic%20Mirror%20Photobooth." target="_blank" rel="noopener" class="inline-flex items-center text-green-600 hover:text-green-700" aria-label="Chat on WhatsApp">
+<i class="ri-whatsapp-line mr-1"></i>
+<span>WhatsApp</span>
+</a>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+<i class="ri-mail-line text-primary"></i>
+</div>
+<div>
+<p class="font-medium text-gray-900">Email</p>
+<a class="text-gray-600 hover:text-primary underline underline-offset-2" href="mailto:fotografiamigransenor@gmail.com">fotografiamigransenor@gmail.com</a>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+<i class="ri-map-pin-line text-primary"></i>
+</div>
+<div>
+<p class="font-medium text-gray-900">Location</p>
+<p class="text-gray-600">Serving all of Aruba</p>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+<i class="ri-time-line text-primary"></i>
+</div>
+<div>
+<p class="font-medium text-gray-900">Availability</p>
+<p class="text-gray-600">Available for early morning and late night events</p>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-900 mb-6">Languages</h3>
+<div class="flex items-center">
+ <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+  <i class="ri-translate text-primary"></i>
+ </div>
+ <div>
+  <p class="font-medium text-gray-900">We speak</p>
+  <p class="text-gray-600">English, Papiamento, Spanish & Dutch</p>
+ </div>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-900 mb-6">Social Media</h3>
+<div class="space-y-3">
+  <a href="https://www.instagram.com/magic_mirror_photobooth_aruba?igshid=MWFhZGo4bXE0dGRzMQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="flex items-center text-gray-700 hover:text-primary transition-colors">
+    <i class="ri-instagram-line text-primary mr-2"></i>
+    <span>Instagram: @magic_mirror_photobooth_aruba</span>
+  </a>
+  <a href="https://www.facebook.com/share/17Dd6RGsNk/?mibextid=wwXIfr" target="_blank" rel="noopener" class="flex items-center text-gray-700 hover:text-primary transition-colors">
+    <i class="ri-facebook-fill text-primary mr-2"></i>
+    <span>Facebook: Visit our page</span>
+  </a>
+  <a href="https://www.tiktok.com/@magic.mirror.phot?_t=ZM-8yJ6t6NLYrI&_r=1" target="_blank" rel="noopener" class="flex items-center text-gray-700 hover:text-primary transition-colors">
+    <i class="ri-tiktok-fill text-primary mr-2"></i>
+    <span>TikTok: @magic.mirror.phot</span>
+  </a>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-gray-900 mb-4">Service Areas</h3>
+<div class="bg-gray-100 rounded-lg p-6 h-64" style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;">
+<div class="bg-white/90 backdrop-blur-sm rounded-lg p-4 max-w-xs">
+<p class="text-sm text-gray-700 font-medium mb-2">We serve all areas of Aruba including:</p>
+<ul class="text-sm text-gray-600 space-y-1">
+<li>• Oranjestad</li>
+<li>• Eagle Beach</li>
+<li>• Palm Beach</li>
+<li>• Noord</li>
+<li>• And more!</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-gray-900 text-white py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-3 gap-8 mb-8">
+<div>
+<div class="flex items-center mb-4">
+<a href="#home" class="flex items-center">
+ <img src="assets/images/logo.jpeg" alt="Magic Mirror Photobooth" class="h-10 w-auto"/>
+</div>
+<p class="text-gray-400 mb-4">Creating unforgettable photo experiences with our interactive magic mirror photobooth in beautiful Aruba.</p>
+<div class="flex space-x-4">
+<a href="https://www.facebook.com/magicmirrorphotobootharuba" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="https://www.instagram.com/magic_mirror_photobooth_aruba" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="https://wa.me/2977450763?text=Hi%21%20I%27d%20like%20to%20book%20the%20Magic%20Mirror%20Photobooth." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-whatsapp-line"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-semibold mb-4">Services</h4>
+<ul class="space-y-2 text-gray-400">
+<li><a href="#" class="hover:text-white transition-colors">Wedding Photobooth</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Corporate Events</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Birthday Parties</a></li>
+<li><a href="#" class="hover:text-white transition-colors">Special Occasions</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold mb-4">Quick Links</h4>
+<ul class="space-y-2 text-gray-400">
+<li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+<li><a href="#how-it-works" class="hover:text-white transition-colors">How It Works</a></li>
+<li><a href="#gallery" class="hover:text-white transition-colors">Gallery</a></li>
+<li><a href="#packages" class="hover:text-white transition-colors">Packages</a></li>
+<li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+<li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">&copy; 2024 Magic Mirror Photobooth by Fotografia Mi Gran Se&ntilde;or. All rights reserved.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a href="https://danielorioymi.tech" target="_blank" class="text-gray-400 hover:text-white text-sm transition-colors">Built By SolvaTree</a>
+</div>
+</div>
+</div>
+</footer>
+<script id="mobile-menu-toggle">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuBtn.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+});
+</script>
+<script id="gallery-filter">
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('[data-filter]');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const loadMoreBtn = document.getElementById('load-more');
+  const loadMoreContainer = document.getElementById('load-more-container');
+  const allBtn = Array.from(filterButtons).find(b => b.getAttribute('data-filter') === 'all');
+  let currentItems = 8;
+
+  function applyFilter(filter) {
+    // Button styles
+    filterButtons.forEach(btn => {
+      btn.classList.remove('bg-primary', 'text-white');
+      btn.classList.add('bg-gray-200', 'text-gray-700');
+    });
+    const activeBtn = Array.from(filterButtons).find(b => b.getAttribute('data-filter') === filter);
+    if (activeBtn) {
+      activeBtn.classList.remove('bg-gray-200', 'text-gray-700');
+      activeBtn.classList.add('bg-primary', 'text-white');
+    }
+
+    // Show/hide items
+    let shown = 0;
+    galleryItems.forEach(item => {
+      const match = (filter === 'all' || item.getAttribute('data-category') === filter);
+      if (match && shown < currentItems) {
+        item.style.display = 'block';
+        shown++;
+      } else if (match) {
+        item.style.display = 'none';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    // Load more visibility
+    const totalMatching = Array.from(galleryItems).filter(i => filter === 'all' || i.getAttribute('data-category') === filter).length;
+    if (totalMatching > currentItems) {
+      loadMoreContainer && (loadMoreContainer.style.display = 'block');
+    } else {
+      loadMoreContainer && (loadMoreContainer.style.display = 'none');
+    }
+  }
+
+  function loadMore() {
+    const activeBtn = Array.from(filterButtons).find(b => b.classList.contains('bg-primary'));
+    const filter = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+    const visibleItems = Array.from(galleryItems).filter(i => (filter === 'all' || i.getAttribute('data-category') === filter));
+    // Reveal next 4 matching items
+    let revealed = 0;
+    for (let i = 0; i < visibleItems.length && revealed < 4; i++) {
+      const el = visibleItems[i];
+      if (el.style.display === 'none') {
+        el.style.display = 'block';
+        revealed++;
+      }
+    }
+    const remainingHidden = visibleItems.filter(i => i.style.display === 'none').length;
+    if (remainingHidden === 0 && loadMoreContainer) {
+      loadMoreContainer.style.display = 'none';
+    }
+  }
+
+  // Initialize
+  if (allBtn) {
+    currentItems = 8;
+    applyFilter('all');
+  }
+  if (loadMoreBtn) {
+    loadMoreContainer && loadMoreContainer.classList.remove('hidden');
+    loadMoreBtn.addEventListener('click', loadMore);
+  }
+
+  // Filter click handlers
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      currentItems = 8;
+      const filter = this.getAttribute('data-filter');
+      applyFilter(filter);
+    });
+  });
+});
+</script>
+<script id="smooth-scroll">
+document.addEventListener('DOMContentLoaded', function() {
+const links = document.querySelectorAll('a[href^="#"]');
+links.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+const offsetTop = targetElement.offsetTop - 80;
+window.scrollTo({
+top: offsetTop,
+behavior: 'smooth'
+});
+}
+});
+});
+});
+</script>
+<script id="navbar-scroll">
+document.addEventListener('DOMContentLoaded', function() {
+const navbar = document.querySelector('nav');
+window.addEventListener('scroll', function() {
+if (window.scrollY > 100) {
+navbar.classList.add('shadow-lg');
+} else {
+navbar.classList.remove('shadow-lg');
+}
+});
+});
+</script>
+</body>
+</html>

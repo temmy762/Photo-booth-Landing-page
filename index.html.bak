@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Mirror Photobooth - Aruba's Most Engaging Photo Experience</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Magic Mirror Photobooth Logo">
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <button class="cta-button primary-cta">Get Quote</button>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Aruba's Most Interactive Photo Experience</h1>
+                <p class="hero-subtitle">The Magic Mirror Photobooth brings fun, animation, and unforgettable memories to your event</p>
+                <p class="hero-differentiator">A talking mirror that guides your guests through magical photo moments</p>
+                <div class="hero-ctas">
+                    <button class="cta-button primary-cta">Get Your Quote</button>
+                    <button class="cta-button secondary-cta">See It In Action</button>
+                </div>
+                <p class="trust-indicators">Flexible Hours • Multilingual Service • Personalized Experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes Us Special Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">What Sets Us Apart in Aruba</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🪞</div>
+                    <h3>Interactive & Engaging Magic Mirror Experience</h3>
+                    <p>Our talking mirror guides guests through fun photo sessions, creating unforgettable interactive moments.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💝</div>
+                    <h3>Personalized Service</h3>
+                    <p>You're partnering with people who genuinely care about making your event special and stress-free.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🕐</div>
+                    <h3>We Run on Your Schedule</h3>
+                    <p>Available for early mornings, late nights, and everything in between to fit your event's needs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗣️</div>
+                    <h3>We Speak Your Language</h3>
+                    <p>English, Papiamento, Spanish, and Dutch - we communicate comfortably with all your guests.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Collaborative Approach</h3>
+                    <p>We love working with venues, planners, and creatives to bring your vision to life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Magic Mirror Experience Section -->
+    <section class="mirror-experience">
+        <div class="container">
+            <h2 class="section-title">How the Magic Mirror Works</h2>
+            <div class="experience-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Greeting & Guidance</h3>
+                        <p>The mirror greets your guests with a friendly animation and guides them through the photo experience.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Interactive Poses</h3>
+                        <p>Guests follow fun, on-screen prompts and animations to strike their best poses.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Photo Capture</h3>
+                        <p>The mirror counts down and captures the perfect shot with high-quality images.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Instant Sharing</h3>
+                        <p>Photos are instantly available via email, text, or social media sharing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mirror-demo">
+                <div class="mirror-frame">
+                    <div class="mirror-screen">
+                        <div class="mirror-content">
+                            <div class="mirror-message">Say CHEESE! 😊</div>
+                            <div class="mirror-countdown">3... 2... 1!</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="cta-button primary-cta">See It In Action</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages" id="packages">
+        <div class="container">
+            <h2 class="section-title">Our Magic Mirror Packages</h2>
+            <p class="section-subtitle">Choose the perfect package for your event</p>
+            
+            <div class="pricing-grid">
+                <!-- Basic Package -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Essential Experience</h3>
+                        <div class="price">$599<span>/event</span></div>
+                        <p>Perfect for small gatherings and private parties</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><span>✔</span> 3 hours of unlimited photos</li>
+                            <li><span>✔</span> Digital copies of all photos</li>
+                            <li><span>✔</span> Custom event branding</li>
+                            <li><span>✔</span> Online gallery for 30 days</li>
+                            <li><span>✔</span> Basic props included</li>
+                            <li><span>✘</span> No social media sharing</li>
+                            <li><span>✘</span> No on-site attendant</li>
+                        </ul>
+                    </div>
+                    <button class="cta-button secondary-cta">Book Now</button>
+                </div>
+
+                <!-- Popular Package -->
+                <div class="pricing-card popular">
+                    <div class="popular-tag">MOST POPULAR</div>
+                    <div class="pricing-header">
+                        <h3>Premium Experience</h3>
+                        <div class="price">$899<span>/event</span></div>
+                        <p>Ideal for weddings and corporate events</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><span>✔</span> 5 hours of unlimited photos</li>
+                            <li><span>✔</span> Digital copies + 10 printed photos</li>
+                            <li><span>✔</span> Custom event branding</li>
+                            <li><span>✔</span> Online gallery for 90 days</li>
+                            <li><span>✔</span> Premium props included</li>
+                            <li><span>✔</span> Social media sharing</li>
+                            <li><span>✔</span> Dedicated attendant (2 hours)</li>
+                        </ul>
+                    </div>
+                    <button class="cta-button primary-cta">Book Now</button>
+                </div>
+
+                <!-- Premium Package -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Ultimate Experience</h3>
+                        <div class="price">$1,299<span>/event</span></div>
+                        <p>The complete package for unforgettable events</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><span>✔</span> 8 hours of unlimited photos</li>
+                            <li><span>✔</span> Digital copies + 20 printed photos</li>
+                            <li><span>✔</span> Custom event branding</li>
+                            <li><span>✔</span> Online gallery for 6 months</li>
+                            <li><span>✔</span> Premium props + custom backdrops</li>
+                            <li><span>✔</span> Social media sharing + live feed</li>
+                            <li><span>✔</span> Dedicated attendant (full event)</li>
+                        </ul>
+                    </div>
+                    <button class="cta-button secondary-cta">Book Now</button>
+                </div>
+            </div>
+            
+            <div class="custom-package">
+                <p>Need something different? <a href="#contact">Contact us</a> for custom packages and special requests!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Don't just take our word for it - hear from our happy clients</p>
+            
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        ★★★★★
+                    </div>
+                    <p class="testimonial-text">"The Magic Mirror was the highlight of our wedding! Our guests couldn't stop raving about it. The photos turned out amazing and the team was incredibly professional."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah M.</h4>
+                            <p>Wedding Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        ★★★★★
+                    </div>
+                    <p class="testimonial-text">"We've used Magic Mirror Photo Booth for our last three corporate events. Their service is exceptional, and the mirror always draws a crowd. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James R.">
+                        </div>
+                        <div class="author-info">
+                            <h4>James R.</h4>
+                            <p>Corporate Event Planner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        ★★★★★
+                    </div>
+                    <p class="testimonial-text">"The Magic Mirror made my birthday party unforgettable! The photos are high quality, and the setup was so easy. Will definitely book again for future events!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Maria G.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Maria G.</h4>
+                            <p>Birthday Party Host</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-cta">
+                <p>Ready to make your event unforgettable?</p>
+                <a href="#contact" class="cta-button primary-cta">Book Your Magic Mirror</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Magic Moments Captured</h2>
+            <p class="section-subtitle">See the fun and excitement our Magic Mirror brings to every event</p>
+            
+            <!-- Filter Tabs -->
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All Events</button>
+                <button class="filter-btn" data-filter="wedding">Weddings</button>
+                <button class="filter-btn" data-filter="corporate">Corporate</button>
+                <button class="filter-btn" data-filter="birthday">Birthdays</button>
+                <button class="filter-btn" data-filter="special">Special Events</button>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Initial visible items -->
+                <div class="gallery-item" data-category="wedding">
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Wedding photo booth fun">
+                    <div class="gallery-overlay">
+                        <h4>Wedding Memories</h4>
+                        <p>Sarah & Michael's Big Day</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="corporate">
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1584&q=80" alt="Corporate event">
+                    <div class="gallery-overlay">
+                        <h4>Company Gala</h4>
+                        <p>Annual Awards Night 2023</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="birthday">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Birthday party">
+                    <div class="gallery-overlay">
+                        <h4>Sweet 16</h4>
+                        <p>Jessica's Birthday Bash</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="wedding">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Wedding reception">
+                    <div class="gallery-overlay">
+                        <h4>Reception Fun</h4>
+                        <p>Chris & Taylor's Wedding</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="special">
+                    <img src="https://images.unsplash.com/photo-1516450360452-93177f5e28e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Graduation party">
+                    <div class="gallery-overlay">
+                        <h4>Graduation Party</h4>
+                        <p>Class of 2023</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="special">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Family reunion">
+                    <div class="gallery-overlay">
+                        <h4>Family Reunion</h4>
+                        <p>Johnson Family 2023</p>
+                    </div>
+                </div>
+                
+                <!-- Additional items (initially hidden) -->
+                <div class="gallery-item hidden" data-category="wedding">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Wedding couple">
+                    <div class="gallery-overlay">
+                        <h4>Wedding Bliss</h4>
+                        <p>Alex & Jamie's Wedding</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item hidden" data-category="corporate">
+                    <img src="https://images.unsplash.com/photo-1505373876331-ff89baa2b99d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Corporate event">
+                    <div class="gallery-overlay">
+                        <h4>Product Launch</h4>
+                        <p>TechCorp 2023</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item hidden" data-category="birthday">
+                    <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Birthday party">
+                    <div class="gallery-overlay">
+                        <h4>Birthday Bash</h4>
+                        <p>Tom's 30th Celebration</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item hidden" data-category="special">
+                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Corporate gala">
+                    <div class="gallery-overlay">
+                        <h4>Corporate Gala</h4>
+                        <p>Annual Company Party</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item" data-category="birthday">
+                    <img src="https://images.unsplash.com/photo-1517456804785-a0fdc97c4a1c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Birthday celebration">
+                    <div class="gallery-overlay">
+                        <h4>Sweet 16</h4>
+                        <p>Emma's Birthday Bash</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item" data-category="special">
+                    <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80" alt="Graduation party">
+                    <div class="gallery-overlay">
+                        <h4>Graduation</h4>
+                        <p>Class of 2023 Celebration</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item" data-category="special">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Music festival">
+                    <div class="gallery-overlay">
+                        <h4>Music Festival</h4>
+                        <p>Summer Beats 2023</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item" data-category="special">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Family reunion">
+                    <div class="gallery-overlay">
+                        <h4>Family Reunion</h4>
+                        <p>Johnson Family 2023</p>
+                    </div>
+                </div>
+                
+                <!-- Additional Gallery Items (initially hidden) -->
+                <div class="gallery-item hidden" data-category="wedding">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Wedding couple">
+                    <div class="gallery-overlay">
+                        <h4>Wedding Bliss</h4>
+                        <p>Alex & Jamie's Wedding</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item hidden" data-category="corporate">
+                    <img src="https://images.unsplash.com/photo-1505373876331-ff89baa2b99d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Corporate event">
+                    <div class="gallery-overlay">
+                        <h4>Product Launch</h4>
+                        <p>TechCorp 2023</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item hidden" data-category="birthday">
+                    <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Birthday party">
+                    <div class="gallery-overlay">
+                        <h4>Birthday Bash</h4>
+                        <p>Tom's 30th Celebration</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-cta">
+                <p>Ready to create unforgettable memories at your event?</p>
+                <a href="#contact" class="cta-button primary-cta">Book Your Magic Mirror Today</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script src="gallery.js"></script>
+</body>
+</html>
